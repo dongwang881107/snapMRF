@@ -1,0 +1,8 @@
+*.o
+.DS_Store
+/src/mrf
+/src/test
+/fig/.DS_Store
+/matlab/.DS_Store
+/data/.DS_Store
+/src/.DS_Store
