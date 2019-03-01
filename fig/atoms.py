@@ -25,7 +25,10 @@ ax.plot(abs(atoms[:,random.randint(1,cols-1)]), linewidth=width)
 ax.plot(abs(atoms[:,random.randint(1,cols-1)]), linewidth=width)
 ax.plot(abs(atoms[:,random.randint(1,cols-1)]), linewidth=width)
 
-ax.set(xlabel='TR Index', ylabel='Signal Intensity')
+ax.tick_params(axis='both', which='major', length=10, direction='in')
+ax.tick_params(axis='both', which='minor', length=8, direction='in')
+
+ax.set(xlabel='TR Index', ylabel='Normalized Signal Intensity')
 
 for item in ([ax.title, ax.xaxis.label, ax.yaxis.label] +
               ax.get_xticklabels() + ax.get_yticklabels()):

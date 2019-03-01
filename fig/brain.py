@@ -7,27 +7,11 @@ import random
 from scipy import ndimage
 import math
 
-# ./mrf /data/MRF/brain/MRF001.csv ../data/001_varTR.ra
-# -t 100:100:4000 -s 20:20:2000 -b -400:50:400
-# -m ../result/maps500k_brain_varTR_b1map.ra -r 0.5:0.1:1.5
-# -M /data/MRF/brain/B1.ra
-
-# Parsing parameters...
-# T1 : 100:100:4000
-# T2 : 20:20:2000
-# B0 : -400:50:400
-# l_t1: 40, l_t2: 100, l_b0: 17, natoms: 51510
-
-# dictionary time=6037.32
-# matching time=364.51
-
 fig, ax = plt.subplots(figsize=(15,5))
-
 fs = 13
-
 mask = ra.read('../fig/mask_brain.ra')
 
-path_epg = 'maps500k_brain_varTR'
+path_epg = 'maps500k_brain_varTR_b1map'
 maps_epg = ra.read('../result/' + path_epg + '.ra')
 
 t1_epg = np.reshape(maps_epg[0,:],(240,240),order='F')

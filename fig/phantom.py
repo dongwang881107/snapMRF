@@ -23,38 +23,6 @@ def create_circular_mask(h, w, center=None, radius=None):
 radius = 64
 circle = create_circular_mask(240,240,[120,120],radius)
 
-# ./mrf /data/MRF/MRF103.csv /data/MRF/phantom/image_varTE_103.ra
-# -t 50:5:200+200:25:500+500:100:3000 -s 4:2:20+20:5:100+100:20:200+200:100:1000
-# -b -150:30:-90+-80:20:-40+-40:10:40+40:20:80+90:30:150 -r 0.5:0.1:1.5
-# -m ../result/maps400k_phantom_varTE_b1map.ra -M /data/MRF/phantom/B1.ra
-
-# dictionary time=6722.01
-# matching time=364.34
-
-# ./mrf /data/MRF/phantom/MRF001.csv /data/MRF/phantom/image_001.ra
-# -t 50:5:200+200:25:500+500:100:3000 -s 4:2:20+20:5:100+100:20:200+200:100:1000
-# -b -150:30:-90+-80:20:-40+-40:10:40+40:20:80+90:30:150 -r 0.5:0.1:1.5
-# -m ../result/maps400k_phantom_varTR_b1_map.ra -M /data/MRF/phantom/B1.ra
-
-# dictionary time=4520.62
-# matching time=273.02
-
-# Parsing parameters...
-# T1 : 50:5:200+200:25:500+500:100:3000
-# T2 : 4:2:20+20:5:100+100:20:200+200:100:1000
-# B0 : -150:30:-90+-80:10:-40+-40:5:40+40:10:80+90:30:150
-# B1 : 0.5:0.1:1.5
-# l_t1: 68, l_t2: 38, l_b0: 31, l_b1: 11
-# NATOMS: 701096, natoms: 63736
-
-# Parsing parameters...
-# T1 : 50:5:200+200:25:500+500:100:3000
-# T2 : 4:2:20+20:5:100+100:20:200+200:100:1000
-# B0 : -150:30:-90+-80:20:-40+-40:10:40+40:20:80+90:30:150
-# B1 : 0.5:0.1:1.5
-# l_t1: 68, l_t2: 38, l_b0: 19, l_b1: 11
-# NATOMS: 429704, natoms: 39064
-
 path = 'maps400k_phantom_varTR_b1map'
 
 img = ra.read('../fig/data_phantom.ra')
