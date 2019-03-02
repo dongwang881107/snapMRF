@@ -41,7 +41,7 @@ main(int argc, char *argv[])
 
     // Setup default values
     const char *in_mrf, *in_img, *in_b1map, *out_atoms, *out_maps, *out_params;
-    in_mrf = "../data/MRF_100.csv";
+    in_mrf = "../data/MRF001.csv";
     in_img = NULL;
     in_b1map = NULL;
     out_maps = NULL;
