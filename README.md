@@ -1,6 +1,8 @@
 # MRF_CUDA
 
-Dictionaries are generated using both Bloch equation simulation (ROA) and extended phase graph (EPG), and maps are reconstructed using template matching. 
+MRF_CUDA is a CUDA package to generate MRF dictionaries and parameter maps. 
+
+Dictionaries are generated using both Bloch equation simulation (ROA) and extended phase graph (EPG), and parameter maps are reconstructed using template matching. 
 
 ## Dependencies
 
