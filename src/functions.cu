@@ -257,7 +257,7 @@ parse_length(const char *str)
         {
             if (abs(tmp - min) < 1E-7)
                 len = len - 1;
-            tmp = min + (len - 1) * step;
+            tmp = min + len * step;
         }
         LEN += len;
         range = strtok(NULL, "+");
@@ -331,7 +331,7 @@ parse_params(float *h_p, const char *str, size_t LEN)
         parse_range(range, &min, &step, &max, &len);
         if (count == 1)
         {
-            tmp = max;
+            tmp = min + (len - 1) * step;
             linspace(h_p + stride, min, step, len);
         }
         else
@@ -343,7 +343,7 @@ parse_params(float *h_p, const char *str, size_t LEN)
             }
             else
                 linspace(h_p + stride, min, step, len);
-            tmp = max;
+            tmp = min + len * step;
         }
         stride += len;
         range = strtok(NULL, "+");
@@ -768,7 +768,7 @@ epg_se(float2 * d_atoms, float *d_params, float *d_mrf,
     // gradient dephasing
     dephase_gradients(d_w, natoms, nstates);
 
-    // dacay at TE/2
+    // dacay at TE
     decay_signal(d_w, d_params, d_mrf, d_exp, nreps, natoms, nstates, nparams,
       0, 1);
 
@@ -796,7 +796,7 @@ epg_se(float2 * d_atoms, float *d_params, float *d_mrf,
         // gradient dephasing
         dephase_gradients(d_w, natoms, nstates);
 
-        // decay for flip angle at TR
+        // decay for flip angle at TR-TE
         decay_signal(d_w, d_params, d_mrf, d_exp, nreps, natoms, nstates,
             nparams, i, 2);
     }
@@ -837,7 +837,7 @@ epg_tse(float2 * d_atoms, float *d_params, float *d_mrf,
     // gradient dephasing
     dephase_gradients(d_w, natoms, nstates);
 
-    // decay at TE/2
+    // decay at TE
     decay_signal(d_w, d_params, d_mrf, d_exp, nreps, natoms, nstates, nparams,
        0, 1);
 
@@ -853,7 +853,7 @@ epg_tse(float2 * d_atoms, float *d_params, float *d_mrf,
         // gradient dephasing
         dephase_gradients(d_w, natoms, nstates);
 
-        // decay at TE/2
+        // decay at TE
         decay_signal(d_w, d_params, d_mrf, d_exp, nreps, natoms, nstates,
             nparams, i, 1);
 
@@ -865,7 +865,7 @@ epg_tse(float2 * d_atoms, float *d_params, float *d_mrf,
         // gradient dephasing
         dephase_gradients(d_w, natoms, nstates);
 
-        // decay at TE/2
+        // decay at TR-TE
         decay_signal(d_w, d_params, d_mrf, d_exp, nreps, natoms, nstates,
             nparams, i, 2);
     }
