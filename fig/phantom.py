@@ -1,11 +1,6 @@
 import ra
-import csv
 import matplotlib.pyplot as plt
-from matplotlib import rc
 import numpy as np
-import random
-from scipy import ndimage
-import math
 
 def create_circular_mask(h, w, center=None, radius=None):
 
@@ -44,7 +39,6 @@ t1 = np.reshape(maps[0,:],(240,240),order='F')
 t2 = np.reshape(maps[1,:],(240,240),order='F')
 b0 = np.reshape(maps[2,:],(240,240),order='F')
 b1 = np.reshape(maps[3,:],(240,240),order='F')
-# b1 = ra.read('../fig/B1_phantom.ra')
 pd = np.reshape(maps[4,:],(240,240),order='F')
 
 t1[t1>=2600]=0
@@ -77,14 +71,12 @@ plt.subplot(233)
 plt.imshow(t2,aspect='equal',cmap='inferno')
 cbar = plt.colorbar()
 cbar.set_ticks(np.linspace(np.min(t2[:]),np.max(t2[:]),5))
-# cbar.set_ticks(np.linspace(0,300,4))
 plt.axis('off')
 plt.title(r"$T_2$ (ms)",fontsize=fs)
 
 plt.subplot(234)
 plt.imshow(b1,aspect='equal',cmap='PuOr',vmin=0.5,vmax=1.5)
 cbar = plt.colorbar()
-# cbar.set_ticks(np.linspace(np.min(b1[:]),np.max(b1[:]),4))
 cbar.set_ticks(np.linspace(0.5,1.5,3))
 plt.axis('off')
 plt.title(r"$B_1^+$",fontsize=fs)
@@ -106,4 +98,3 @@ plt.title(r"proton density",fontsize=fs)
 # plt.show()
 path = 'phantom_varTR'
 fig.savefig('../fig/' + path + '.eps',bbox_inches='tight')
-# fig.savefig('../fig/' + path + '.png',bbox_inches='tight')

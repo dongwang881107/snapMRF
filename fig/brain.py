@@ -1,11 +1,6 @@
 import ra
-import csv
 import matplotlib.pyplot as plt
-from matplotlib import rc
 import numpy as np
-import random
-from scipy import ndimage
-import math
 
 fig, ax = plt.subplots(figsize=(15,5))
 fs = 13
@@ -32,13 +27,12 @@ cbar = plt.colorbar()
 cbar.set_ticks(np.linspace(np.min(t1_epg[:]),np.max(t1_epg[:]),5))
 plt.xticks([])
 plt.yticks([])
-plt.ylabel('EPG',fontsize=fs)
+plt.ylabel('snapMRF',fontsize=fs)
 plt.title(r"$T_1$ (ms)",fontsize=fs)
 
 plt.subplot(242)
 plt.imshow(t2_epg,aspect='equal',cmap='inferno', vmax=300)
 cbar = plt.colorbar()
-# cbar.set_ticks(np.linspace(np.min(t2_epg[:]),np.max(t2_epg[:]),5))
 cbar.set_ticks(np.linspace(0,300,4))
 plt.axis('off')
 plt.title(r"$T_2$ (ms)",fontsize=fs)
@@ -53,7 +47,6 @@ plt.title(r"off-resonance (Hz)",fontsize=fs)
 plt.subplot(244)
 plt.imshow(pd_epg,aspect='equal',cmap='inferno', vmax=0.25)
 cbar = plt.colorbar()
-# cbar.set_ticks(np.linspace(np.min(pd_epg[:]),np.max(pd_epg[:]),5))
 cbar.set_ticks(np.linspace(0,0.25,6))
 
 plt.axis('off')
@@ -80,12 +73,11 @@ cbar = plt.colorbar()
 cbar.set_ticks(np.linspace(np.min(t1_roa[:]),np.max(t1_roa[:]),5))
 plt.xticks([])
 plt.yticks([])
-plt.ylabel('ROA',fontsize=fs)
+plt.ylabel('Ma et al.',fontsize=fs)
 
 plt.subplot(246)
 plt.imshow(t2_roa,aspect='equal',cmap='inferno', vmax=300)
 cbar = plt.colorbar()
-# cbar.set_ticks(np.linspace(np.min(t2_roa[:]),np.max(t2_roa[:]),5))
 cbar.set_ticks(np.linspace(0,300,4))
 plt.axis('off')
 
@@ -98,11 +90,10 @@ plt.axis('off')
 plt.subplot(248)
 plt.imshow(pd_roa,aspect='equal',cmap='inferno', vmax = 0.25)
 cbar = plt.colorbar()
-# cbar.set_ticks(np.linspace(np.min(pd_roa[:]),np.max(pd_roa[:]),5))
 cbar.set_ticks(np.linspace(0,0.25,6));
 plt.axis('off')
 
 # plt.show()
 path = 'brain_varTR'
 fig.savefig('../fig/' + path + '.eps',bbox_inches='tight')
-# fig.savefig('../fig/' + path + '.png',bbox_inches='tight')
+fig.savefig('../fig/' + path + '.png',bbox_inches='tight')

@@ -1,17 +1,8 @@
 import ra
-import csv
 import matplotlib.pyplot as plt
-from matplotlib import rc
 import numpy as np
-import random
-from scipy import ndimage
-import math
-from pylab import scatter
-import pylab
 
 natoms=np.array([10150,20090,32106,45006,67338,78762,91889,111370,138866])
-# dict_cuda_roa=np.array([1.09,1.09,1.09,1.10,1.13,1.15,1.18,1.20,1.22])
-# dict_matlab_roa=np.array([111,222,359,499,719,882,989,1180,1470])
 dict_cuda_epg=np.array([1.73,2.58,3.65,4.79,6.80,7.69,8.81,10.5,12.9])
 dict_matlab_epg=np.array([543,1060,1910,2390,3950,4270,4889,6030,7610])
 match_cuda=np.array([0.54,0.90,1.35,1.81,2.67,3.04,3.51,4.24,5.28])
@@ -22,7 +13,7 @@ fig, ax = plt.subplots(figsize=(12,9))
 fs = 20
 
 ax.semilogy(natoms, dict_cuda_epg, '--', color = 'black', label='Dictionary')
-ax.plot(natoms,dict_cuda_epg,'o',color = 'black', label = 'CUDA',markersize=12)
+ax.plot(natoms,dict_cuda_epg,'o',color = 'black', label = 'snapMRF',markersize=12)
 
 ax.semilogy(natoms, dict_matlab_epg, '--', color = 'black')
 ax.plot(natoms,dict_matlab_epg,'*',color = 'black', markersize=12)
@@ -31,7 +22,7 @@ ax.semilogy(natoms, match_cuda, color = 'black')
 ax.plot(natoms,match_cuda,'o',color = 'black', markersize=12)
 
 ax.semilogy(natoms, match_matlab, color = 'black',label='Matching')
-ax.plot(natoms,match_matlab,'*',color = 'black',label='MATLAB',markersize=12)
+ax.plot(natoms,match_matlab,'*',color = 'black',label='Ma et al.',markersize=12)
 
 ax.set_xscale("log", nonposx='clip')
 ax.set_ylim(0.1,100000)
@@ -47,3 +38,4 @@ for item in ([ax.title, ax.xaxis.label, ax.yaxis.label] +
 
 # plt.show()
 fig.savefig("../fig/time.eps",bbox_inches='tight')
+fig.savefig("../fig/time.png",bbox_inches='tight')
