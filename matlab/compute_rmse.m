@@ -45,44 +45,34 @@ t1_ave_roa = sort(t1_ave_roa);
 t2_ave_roa = sort(t2_ave_roa);
 
 %%
-t1_gt = [2480,2173,1907,1604,1332,1044,801.7,608.6,458.4,336.5,244.2,176.6,126.9,90.0];
+t1_gt = [2480,2173,1907,1604,1332,1044,801.7,608.6,458.4,336.5,244.2,176.6,126.9,90.9];
 t1_gt = sort(t1_gt');
-t2_gt = [581.3,403.5,278.1,190.9,133.3,96.9,64.1,46.4,32,22.6,15.8,11.2,8,5.6];
+t2_gt = [581.3,403.5,278.1,190.94,133.27,96.89,64.07,46.42,31.97,22.56,15.813,11.237,7.911,5.592];
 t2_gt = sort(t2_gt');
 
-% t1_acc = sqrt(sum(norm(t1_gt-t1_ave))/14)/(max(t1_ave)-min(t1_ave))
-% t2_acc = sqrt(sum(norm(t2_gt-t2_ave))/14)/(max(t2_ave)-min(t2_ave))
 t1_acc_epg = sqrt(sum(norm(t1_gt-t1_ave_epg))/14);
 t2_acc_epg = sqrt(sum(norm(t2_gt-t2_ave_epg))/14);
 t1_acc_roa = sqrt(sum(norm(t1_gt-t1_ave_roa))/14);
 t2_acc_roa = sqrt(sum(norm(t2_gt-t2_ave_roa))/14);
 %%
-
 t = [t1_gt,t1_ave_epg,t1_ave_roa,t2_gt,t2_ave_epg,t2_ave_roa];
-% T = cell(16,4);
 
-%% Save into .csv file
-colnames = {'a','b','c','d','e','f'};
+f = fopen('table1.tex','w');
 
-t=str2num(num2str(t,3));
-t = num2cell(t);
+for i=1:size(t,1)
+    for j=1:size(t,2)
+        if (j<size(t,2))
+            fprintf(f,'%.1f & ', t(i,j));
+%             fprintf(f, '%.*f & ', 2-floor(log10(abs(t(i,j)))), t(i,j));
+        else
+            fprintf(f,  '%.1f\\\\\n', t(i,j));
+%             fprintf(f, '%.*f\\\\\n', 2-floor(log10(abs(t(i,j)))), t(i,j)); 
+        end
+    end
+end
+fprintf(f,'\\midrule[1pt]\n');
+fprintf(f, 'RMSE (ms) & %.1f & %.1f & RMSE (ms) & %.1f & %.1f\\\\\n', ...
+    t1_acc_epg, t1_acc_roa, t2_acc_epg, t2_acc_roa);
 
-T = cell(15,6);
-T(1:14,:) = t;
-T(15,1) = {"RMSE (ms)"};
-T(15,2) = num2cell(str2num(num2str(t1_acc_epg,3)));
-T(15,3) = num2cell(str2num(num2str(t1_acc_roa,3)));
-T(15,4) = {"RMSE (ms)"};
-T(15,5) = num2cell(str2num(num2str(t2_acc_epg,3)));
-T(15,6) = num2cell(str2num(num2str(t2_acc_roa,3)));
+fclose(f);
 
-%% Write results to csv files
-% data = table(t(:,1),t(:,2),t(:,3),t(:,4),t(:,5),t(:,6),'VariableNames',colnames);
-% writetable(data,'/Users/wangdong/Documents/Literature/My Papers/mrf/table1.csv');
-
-% data = table(T(end,1),T(end,2),T(end,3),T(end,4),T(end,5),T(end,6),'VariableNames',colnames);
-% writetable(data,'/Users/wangdong/Documents/Literature/My Papers/mrf/table2.csv');
-
-%% Run these two lines in the shell to generate tex files
-% cat table2.csv | sed 's/[ ,][ ,]*/\&/g' | awk '{print $0,"\\\\"}' | tail -1 > table2.tex
-% cat table1.csv | sed 's/,/\&/g' | awk '{print $0,"\\\\"}' > table1.tex
