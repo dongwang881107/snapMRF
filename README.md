@@ -1,15 +1,24 @@
-# MRF_CUDA
+# snapMRF
 
-MRF_CUDA is a CUDA package to generate MRF dictionaries and parameter maps. 
+snapMRF is a CUDA package to generate MRF dictionaries and parameter maps. 
 
-Dictionaries are generated using both Bloch equation simulation (ROA) and extended phase graph (EPG), and parameter maps are reconstructed using template matching. 
+Dictionaries are generated using both Bloch equation simulation (ROA) and extended phase graphs (EPG), and parameter maps are reconstructed using template matching. 
 
 ## Dependencies
 
-We have tested the code using:
+This code has been tested using 
 - Ubuntu 18.04
 - CUDA 10.0
 - Python 3.5
+
+At minimum a working CUDA installation, including cuBLAS, is required to run the 
+code. Python is required to generate the figures from the paper.
+
+## Installing
+
+To install, run the following commands in the `src/` subdirectory:
+- make
+- sudo make install
 
 ## Directory Structure
 - `/src` Contains CUDA utility functions that can be used to generate MRF dictionaries, reconstruct parameter maps and run unit tests.
@@ -37,7 +46,8 @@ Usage: mrf [OPTION] <rfpulse.csv> <imgstack.ra>
 	-B, --blocksize n		 set GPU blocksize
 	-h				 show this help
 ```
-## Unit Test
+
+## Unit Tests
 Run `make` and `./test`
  ```
 Begin unit test for epg_se
