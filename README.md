@@ -35,8 +35,8 @@ code. Python is required to generate the figures from the paper.
 ## Installing
 
 To install, run the following commands in the `src/` subdirectory:
-- make
-- sudo make install
+- `make`
+- `sudo make install`
 
 ## Directory Structure
 - `/src` Contains CUDA utility functions that can be used to generate MRF dictionaries, reconstruct parameter maps and run unit tests.
