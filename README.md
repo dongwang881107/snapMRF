@@ -4,17 +4,19 @@ snapMRF is a CUDA package to generate MRF dictionaries and parameter maps.
 
 Dictionaries are generated using both Bloch equation simulation (ROA) and extended phase graphs (EPG), and parameter maps are reconstructed using template matching. 
 
-![timing](https://github.com/chixindebaoyu/snapMRF/raw/master/fig/time.png "Timing Results")
+<!-- ![timing](https://github.com/chixindebaoyu/snapMRF/raw/master/fig/time.png "Timing Results") -->
+<img src="https://github.com/chixindebaoyu/snapMRF/raw/master/fig/time.png" alt="Timing Results" width="200"/>
 
 Run time comparison between snapMRF and MATLAB in dictionary generation and
 matching. Note the log scale. Time increases linearly with the dictionary size,
 showing efficient parallelization. For this example, with 240 x 240 image
 voxels, matching took much less time than dictionary generation.
 
-![brain](https://github.com/chixindebaoyu/snapMRF/raw/master/fig/brain_varTR.png "Example Reconstruction")
+<!--![brain](https://github.com/chixindebaoyu/snapMRF/raw/master/fig/brain_varTR.png "Example Reconstruction") -->
+<img src="https://github.com/chixindebaoyu/snapMRF/raw/master/fig/brain_varTR.png" alt="Example Reconstruction" width="200"/>
 
-Top row: Example in vivo brain parameter maps generated using snapMRF. From left to right: $T_1$,
-$T_2$, off-resonance, and proton density, respectively. Bottom row: Parameter
+Top row: Example in vivo brain parameter maps generated using snapMRF. From left to right: T1,
+T2, off-resonance, and proton density, respectively. Bottom row: Parameter
 maps generated using the ROA-based MATLAB code of Ma et al.
 
 
